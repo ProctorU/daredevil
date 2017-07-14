@@ -1,0 +1,14 @@
+en:
+  json_api:
+    errors:
+      not_found:
+        reason: Not found
+      forbidden:
+        reason: Unauthorized
+      unprocessable_entity:
+        reason: Unprocessable Entity
+      conflict:
+        reason: Invalid Attribute
+      parameter_missing:
+        reason: Missing Parameter
+        detail: Please supply the %{parameter} param
