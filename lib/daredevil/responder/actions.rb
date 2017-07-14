@@ -76,7 +76,7 @@ module Daredevil
       end
 
       def responder_type_eql?(type)
-        JsonApiResponders.configuration.default_responder_type.eql?(type)
+        Daredevil.configuration.default_responder_type.eql?(type)
       end
     end
   end

@@ -3,16 +3,16 @@ module Daredevil
     module Responses
       def not_found
         self.errors = {
-          reason: I18n.t('json_api.errors.not_found.reason')
+          reason: I18n.t('daredevil.errors.not_found.reason')
         }
         render_error
       end
 
       def parameter_missing
         self.errors = {
-          reason: I18n.t('json_api.errors.parameter_missing.reason'),
+          reason: I18n.t('daredevil.errors.parameter_missing.reason'),
           detail: I18n.t(
-            'json_api.errors.parameter_missing.detail',
+            'daredevil.errors.parameter_missing.detail',
             parameter: resource.param
           )
         }
@@ -21,7 +21,7 @@ module Daredevil
 
       def unauthorized
         self.errors = {
-          reason: I18n.t('json_api.errors.forbidden.reason')
+          reason: I18n.t('daredevil.errors.forbidden.reason')
         }
         render_error
       end
