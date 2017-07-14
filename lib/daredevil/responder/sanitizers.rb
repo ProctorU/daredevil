@@ -2,13 +2,17 @@ module Daredevil
   class Responder
     module Sanitizers
       def self.status_symbol(status)
+        invert_status_if_integer
+        if status.is_a?(Integer)
+          status = Rack::Utils::SYMBOL_TO_STATUS_CODE.invert[status]
+        end
+
         if status.nil? || !status.is_a?(Symbol) ||
            Rack::Utils::SYMBOL_TO_STATUS_CODE[status].nil?
           raise(Daredevil::Errors::UnknownHTTPStatus, status)
         end
 
-        Rack::Utils::SYMBOL_TO_STATUS_CODE.invert[status] if
-          status.is_a?(Integer)
+        status
       end
     end
   end
