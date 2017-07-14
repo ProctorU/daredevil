@@ -1,4 +1,4 @@
-require 'utils/rack_helper'
+require_relative 'utils/rack_helper'
 
 module Daredevil
   module Errors
@@ -13,10 +13,14 @@ module Daredevil
       end
 
       def message
-        statuses = (status_symbols + status_codes).join(', ')
-
         "Unknown HTTP status code '#{status}'.\n"\
         "Available status codes and symbols are: #{statuses}"
+      end
+
+      private
+
+      def statuses
+        (status_symbols + status_codes).join(', ')
       end
     end
 

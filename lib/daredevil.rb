@@ -1,6 +1,7 @@
 require 'rails'
 require 'daredevil/configuration'
 require 'daredevil/engine'
+require 'daredevil/errors'
 require 'daredevil/responder'
 
 module Daredevil
