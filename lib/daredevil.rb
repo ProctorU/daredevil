@@ -1,6 +1,7 @@
 require 'rails'
 require 'daredevil/configuration'
 require 'daredevil/engine'
+require 'daredevil/responder'
 
 module Daredevil
   def self.included(base)
