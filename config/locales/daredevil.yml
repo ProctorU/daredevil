@@ -1,5 +1,5 @@
 en:
-  json_api:
+  daredevil:
     errors:
       not_found:
         reason: Not found

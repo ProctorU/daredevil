@@ -7,5 +7,8 @@ require "daredevil"
 
 module Dummy
   class Application < Rails::Application
+    FactoryGirl.definition_file_paths << Pathname.new("../factories")
+    FactoryGirl.definition_file_paths.uniq!
+    FactoryGirl.find_definitions
   end
 end
