@@ -19,7 +19,6 @@ class DaredevilTest < ActionDispatch::IntegrationTest
 
   test 'normal success response' do
     get posts_url, @params
-    binding.pry
     assert_response :success
   end
 end
