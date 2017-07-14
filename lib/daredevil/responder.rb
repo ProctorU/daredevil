@@ -1,7 +1,9 @@
+require 'daredevil/responder/actions'
 require 'daredevil/responder/responses'
 
 module Daredevil
   class Responder
+    include Actions
     include Responses
 
     attr_accessor :errors
@@ -19,6 +21,19 @@ module Daredevil
       @params = @options[:params]
       @controller = @options[:controller]
       @namespace = @options[:namespace]
+    end
+
+    def respond!
+      render_response
+    end
+
+    def render_response
+      return send("respond_to_#{action}_action") if action.in?(ACTIONS)
+      raise(JsonApi::Errors::UnknownAction, action)
+    end
+
+    def render_error
+      controller.render(error_render_options)
     end
   end
 end
