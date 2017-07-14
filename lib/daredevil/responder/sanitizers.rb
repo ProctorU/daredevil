@@ -2,7 +2,6 @@ module Daredevil
   class Responder
     module Sanitizers
       def self.status_symbol(status)
-        invert_status_if_integer
         if status.is_a?(Integer)
           status = Rack::Utils::SYMBOL_TO_STATUS_CODE.invert[status]
         end
