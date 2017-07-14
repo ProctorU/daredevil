@@ -41,7 +41,7 @@ module Daredevil
     private
 
     def status=(status)
-      @status = Sanitizers.status(status)
+      @status = Sanitizers.status_symbol(status)
     end
 
     def status_code
