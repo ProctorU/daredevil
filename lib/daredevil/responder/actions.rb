@@ -40,7 +40,6 @@ module Daredevil
       end
 
       def resource_render_options
-        binding.pry
         return serializer_resource_render_options if
           responder_type_eql?(:serializer)
         jbuilder_resource_render_options
