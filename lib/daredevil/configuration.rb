@@ -14,9 +14,9 @@ module Daredevil
     include ActiveSupport::Configurable
 
     config_accessor :responder_type
+  end
 
-    configure do |config|
-      config.responder_type = :jbuilder
-    end
+  configure do |config|
+    config.responder_type = :jbuilder
   end
 end

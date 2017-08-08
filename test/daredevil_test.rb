@@ -6,7 +6,7 @@ class DaredevilTest < ActionDispatch::IntegrationTest
   end
 
   test 'configuration defaults to jbuilder' do
-    assert_equal Daredevil.configuration.responder_type, :jbuilder
+    assert_equal Daredevil.config.responder_type, :jbuilder
   end
 
   test 'it has a gem version' do
