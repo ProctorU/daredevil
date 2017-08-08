@@ -1,13 +1,22 @@
+require 'active_support/configurable'
+
 module Daredevil
-  def self.configuration
-    Configuration.new
+  def self.configure(&block)
+    yield @config ||= Daredevil::Configuration.new
+  end
+
+  # Global settings for Daredevil
+  def self.config
+    @config
   end
 
   class Configuration
-    attr_accessor :default_responder_type
+    include ActiveSupport::Configurable
 
-    def initialize
-      @default_responder_type = :jbuilder
+    config_accessor :responder_type
+
+    configure do |config|
+      config.responder_type = :jbuilder
     end
   end
 end
