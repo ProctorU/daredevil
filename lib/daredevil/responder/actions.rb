@@ -63,7 +63,8 @@ module Daredevil
           [
             namespace,
             "#{resource_class}Serializer"
-          ].compact.join('::').constantize
+          ].compact.join('::').safe_constantize
+        options[:serializer] ||= "#{resource_class}Serializer".safe_constantize
       end
 
       def resource_class
