@@ -40,8 +40,6 @@ module Daredevil
       end
 
       def resource_render_options
-        binding.pry
-        # TODO: For testing!
         return serializer_resource_render_options
         jbuilder_resource_render_options
       end
@@ -64,7 +62,8 @@ module Daredevil
           [
             namespace,
             "#{resource_class}Serializer"
-          ].compact.join('::').constantize
+          ].compact.join('::').safe_constantize
+        options[:serializer] ||= "#{resource_class}Serializer".safe_constantize
       end
 
       def resource_class
@@ -88,6 +87,10 @@ module Daredevil
           serializers: 'ActiveModel::Serializers',
           rabl: 'RABL'
         }
+      end
+
+      def responder_type_eql?(type)
+        Daredevil.config.responder_type.eql?(type)
       end
     end
   end

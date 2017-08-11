@@ -1,3 +1,4 @@
+require 'daredevil/configuration'
 require 'daredevil/responder/actions'
 require 'daredevil/responder/responses'
 require 'daredevil/responder/sanitizers'
@@ -89,7 +90,8 @@ module Daredevil
     end
 
     def resource_name
-      return resource.object.class.name if resource.respond_to?(:decorated?)
+      return resource.object.class.name if resource.respond_to?(:decorated?) &&
+        resource.decorated?
       resource.class.name
     end
 
