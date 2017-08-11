@@ -40,8 +40,9 @@ module Daredevil
       end
 
       def resource_render_options
-        return serializer_resource_render_options if
-          responder_type_eql?(:serializer)
+        binding.pry
+        # TODO: For testing!
+        return serializer_resource_render_options
         jbuilder_resource_render_options
       end
 
@@ -75,8 +76,18 @@ module Daredevil
         resource.is_a?(ActiveRecord::Relation)
       end
 
-      def responder_type_eql?(type)
-        Daredevil.configuration.default_responder_type.eql?(type)
+      def responder_type
+        supported_responders.each do |type, klass|
+          return type.to_sym if defined?(klass.safe_constantize).eql?('constant')
+        end
+      end
+
+      def supported_responders
+        {
+          jbuilder: 'Jbuilder',
+          serializers: 'ActiveModel::Serializers',
+          rabl: 'RABL'
+        }
       end
     end
   end

@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    respond_with @post
   end
 
   def create

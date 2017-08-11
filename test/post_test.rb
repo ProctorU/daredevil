@@ -11,6 +11,13 @@ class PostTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'serializer response show' do
+    get post_path(create(:post)), @params
+    r = JSON.parse(response.body)
+    assert_equal 'I love ruby a lot', r['title']
+    assert_response :success
+  end
+
   test 'rescue RecordNotFound' do
     assert_nothing_raised do
       get post_path(1), @params

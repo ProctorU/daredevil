@@ -22,6 +22,5 @@ group :development, :test do
   gem 'pry-byebug', group: %i[development test]
   gem 'pry-highlight', group: %i[development test]
   gem 'pry-rails', group: %i[development test]
-  gem 'pry-remote', group: %i[development test]
   gem 'warden'
 end
