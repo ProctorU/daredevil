@@ -40,15 +40,14 @@ module Daredevil
       end
 
       def resource_render_options
-        return serializer_resource_render_options
-        jbuilder_resource_render_options
+        self.send(:"#{Daredevil.config.responder_type.to_s}_resource_render_options")
       end
 
       def jbuilder_resource_render_options
         render_options
       end
 
-      def serializer_resource_render_options
+      def serializers_resource_render_options
         serializer_key = relation? ? :each_serializer : :serializer
 
         render_options.merge(
@@ -87,10 +86,6 @@ module Daredevil
           serializers: 'ActiveModel::Serializers',
           rabl: 'RABL'
         }
-      end
-
-      def responder_type_eql?(type)
-        Daredevil.config.responder_type.eql?(type)
       end
     end
   end

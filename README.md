@@ -44,11 +44,11 @@ If a status is not set, the default status will be returned.
 
 ### index
 
-    respond_with resource, status: 200
+    respond_with resource
 
 ### show
 
-    respond_with resource, status: 200
+    respond_with resource
 
 ### create
 
