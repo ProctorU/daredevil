@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    respond_with @posts
+    respond_with @post
   end
 
   def create
