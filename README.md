@@ -8,7 +8,7 @@ It is inspired by the [json_api_responders](https://github.com/stankec/json_api_
 
 Add this line to your application's Gemfile:
 
-```ruby
+```
 gem 'daredevil'
 ```
 
@@ -18,7 +18,7 @@ And then execute:
 
 Inside your base controller, include the module:
 
-```ruby
+```
 module Api
   module V1
     class BaseController < ApplicationController
