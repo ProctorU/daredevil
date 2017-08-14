@@ -1,9 +1,16 @@
 require 'test_helper'
 
 class PostTest < ActionDispatch::IntegrationTest
-
+  # Setup by setting serializers as the responder type
+  # Must teardown after this test class runs to reset to default
   setup do
+    Daredevil.config.config.responder_type = :serializers
+    @post = create(:post)
     @params = { params: { format: :json } }
+  end
+
+  teardown do
+    Daredevil.config.config.responder_type = :jbuilder
   end
 
   test 'normal success response' do
@@ -11,9 +18,27 @@ class PostTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'serializer response show' do
+    get post_path(@post), @params
+    r = JSON.parse(response.body)
+    assert r['id'].present?
+    assert_equal 'I love ruby a lot', r['title']
+    assert_response :success
+  end
+
+  test 'custom serializer response show' do
+    skip
+    PostsController.stubs(:respond_with).with(@post, serializer: KustomPostSerializer)
+    get post_path(@post), @params
+    r = JSON.parse(response.body)
+    refute r['id'].present?
+    assert_equal 'I love ruby a lot', r['title']
+    assert_response :success
+  end
+
   test 'rescue RecordNotFound' do
     assert_nothing_raised do
-      get post_path(1), @params
+      get post_path(2), @params
     end
 
     r = JSON.parse(response.body)
