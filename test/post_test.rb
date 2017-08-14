@@ -26,14 +26,15 @@ class PostTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test 'custom serializer response show' do
-  #   @post = create(:post)
-  #   get post_path(@post), @params
-  #   r = JSON.parse(response.body)
-  #   refute r['id'].present?
-  #   assert_equal 'I love ruby a lot', r['title']
-  #   assert_response :success
-  # end
+  test 'custom serializer response show' do
+    skip
+    PostsController.stubs(:respond_with).with(@post, serializer: KustomPostSerializer)
+    get post_path(@post), @params
+    r = JSON.parse(response.body)
+    refute r['id'].present?
+    assert_equal 'I love ruby a lot', r['title']
+    assert_response :success
+  end
 
   test 'rescue RecordNotFound' do
     assert_nothing_raised do
