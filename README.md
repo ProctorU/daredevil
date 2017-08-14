@@ -1,4 +1,4 @@
-##Daredevil
+# Daredevil
 
 This gem provides insight to api errors by providing messages for all general server error response codes.
 
