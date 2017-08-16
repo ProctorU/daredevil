@@ -4,11 +4,17 @@ This gem provides insight to api errors by providing messages for all general se
 
 ## Table of contents
 
+- [Status](#status)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Usage](#developing)
+- [Usage](#usage)
+- [Developing](#developing)
 - [License](#license)
 - [Credits](#credits)
+
+## Status
+
+[![CircleCI](https://circleci.com/gh/ProctorU/daredevil.svg?style=svg)](https://circleci.com/gh/ProctorU/daredevil)
 
 ## Installation
 
@@ -49,8 +55,6 @@ end
 ## Usage
 
 If a status is not set, the default status will be returned.
-
-**index**
 
 ```ruby
 class ResourceController
@@ -120,6 +124,15 @@ module Api
   end
 end
 ```
+
+## Developing
+
+1. Thank you! We love [our contributors](https://github.com/ProctorU/daredevil/graphs/contributors)!
+1. Clone the repository.
+1. Make your changes in a thoughtfully-named branch.
+1. Ensure 1:1 test coverage.
+1. Submit a [Pull Request](https://github.com/ProctorU/daredevil/pulls)!
+1. Celebrate! :tada:
 
 ## License
 
