@@ -127,7 +127,7 @@ This project rocks and uses MIT-LICENSE.
 
 ## Credits
 
-Storm is maintained and funded by [ProctorU](https://twitter.com/ProctorU),
+Daredevil is maintained and funded by [ProctorU](https://twitter.com/ProctorU),
 a simple online proctoring service that allows you to take exams or
 certification tests at home.
 
