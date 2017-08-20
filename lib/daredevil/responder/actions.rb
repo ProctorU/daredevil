@@ -1,9 +1,9 @@
 module Daredevil
   class Responder
     module Actions
-      ACTIONS = %w(index show create update destroy).freeze
+      ACTIONS = %w(index show create edit update destroy).freeze
 
-      %w(index show).each do |method|
+      %w(index show edit).each do |method|
         define_method("respond_to_#{method}_action") do
           self.status ||= :ok
           render_resource
