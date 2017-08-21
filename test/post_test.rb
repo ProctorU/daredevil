@@ -13,13 +13,13 @@ class PostTest < ActionDispatch::IntegrationTest
   end
 
   test 'get edit' do
-    get post_url(create(:post)), @params
+    get edit_post_url(create(:post)), @params
     assert_response :success
   end
 
   test 'rescue RecordNotFound' do
     assert_nothing_raised do
-      get post_path(1), @params
+      get post_path(Post.last.id + 1), @params
     end
 
     r = JSON.parse(response.body)
