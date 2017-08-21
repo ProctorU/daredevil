@@ -7,7 +7,6 @@ class PostTest < ActionDispatch::IntegrationTest
     @params = { params: { format: :json } }
   end
 
-  focus
   test 'normal success response' do
     get posts_url, @params
     assert_response :success
