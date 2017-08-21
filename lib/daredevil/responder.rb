@@ -1,3 +1,4 @@
+require 'daredevil/configuration'
 require 'daredevil/responder/actions'
 require 'daredevil/responder/responses'
 require 'daredevil/responder/sanitizers'

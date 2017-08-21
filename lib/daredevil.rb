@@ -1,5 +1,4 @@
-require 'rails'
-require 'daredevil/configuration'
+require 'active_support'
 require 'daredevil/engine'
 require 'daredevil/errors'
 require 'daredevil/responder'

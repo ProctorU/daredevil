@@ -40,16 +40,14 @@ module Daredevil
       end
 
       def resource_render_options
-        return serializer_resource_render_options if
-          responder_type_eql?(:serializer)
-        jbuilder_resource_render_options
+        self.send(:"#{Daredevil.config.responder_type.to_s}_resource_render_options")
       end
 
       def jbuilder_resource_render_options
         render_options
       end
 
-      def serializer_resource_render_options
+      def serializers_resource_render_options
         serializer_key = relation? ? :each_serializer : :serializer
 
         render_options.merge(
@@ -76,8 +74,18 @@ module Daredevil
         resource.is_a?(ActiveRecord::Relation)
       end
 
-      def responder_type_eql?(type)
-        Daredevil.config.responder_type.eql?(type)
+      def responder_type
+        supported_responders.each do |type, klass|
+          return type.to_sym if defined?(klass.safe_constantize).eql?('constant')
+        end
+      end
+
+      def supported_responders
+        {
+          jbuilder: 'Jbuilder',
+          serializers: 'ActiveModel::Serializers',
+          rabl: 'RABL'
+        }
       end
     end
   end
