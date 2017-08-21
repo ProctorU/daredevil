@@ -3,11 +3,18 @@ require 'test_helper'
 class PostTest < ActionDispatch::IntegrationTest
 
   setup do
+    create(:post)
     @params = { params: { format: :json } }
   end
 
+  focus
   test 'normal success response' do
     get posts_url, @params
+    assert_response :success
+  end
+
+  test 'get edit' do
+    get post_url(create(:post)), @params
     assert_response :success
   end
 

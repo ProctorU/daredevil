@@ -1,10 +1,17 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %w(show)
+  before_action :set_post, only: %w(show edit)
 
   def index
+    @posts = Post.all
+    respond_with(@posts)
   end
 
   def show
+    respond_with(@post)
+  end
+
+  def edit
+    respond_with(@post)
   end
 
   def create
