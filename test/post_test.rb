@@ -5,8 +5,8 @@ class PostTest < ActionDispatch::IntegrationTest
   # Must teardown after this test class runs to reset to default
   setup do
     Daredevil.config.config.responder_type = :serializers
-    @post = create(:post)
     @params = { params: { format: :json } }
+    @post = create(:post)
   end
 
   teardown do
@@ -15,6 +15,11 @@ class PostTest < ActionDispatch::IntegrationTest
 
   test 'normal success response' do
     get posts_url, @params
+    assert_response :success
+  end
+
+  test 'get edit' do
+    get edit_post_url(create(:post)), @params
     assert_response :success
   end
 
@@ -38,7 +43,7 @@ class PostTest < ActionDispatch::IntegrationTest
 
   test 'rescue RecordNotFound' do
     assert_nothing_raised do
-      get post_path(2), @params
+      get post_path(Post.last.id + 1), @params
     end
 
     r = JSON.parse(response.body)

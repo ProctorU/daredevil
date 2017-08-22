@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    daredevil (0.0.1)
+    daredevil (0.0.2)
       rails (>= 4.2.8)
 
 GEM
